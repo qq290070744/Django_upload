@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {{ up.ExcelFile }}
+    <input type="file" name="ExcelFile" id="id_ExcelFile"/>
+    <input type="button" id="submitj" value="提交"/>
+</div>
+
+
+<script src="/static/js/jquery-1.10.2.min.js"></script>
+<script>
+    $('#submitj').bind("click", function () {
+        var file = $('#id_ExcelFile')[0].files[0];
+        var form = new FormData();
+        form.append('ExcelFile', file);
+        $.ajax({
+            type: 'POST',
+            url: '',
+            data: form,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success: function (arg) {
+                alert(arg);
+            }
+        })
+    })
+</script>
+</body>
+</html>
